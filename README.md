@@ -69,6 +69,92 @@ While collapsed, it occupies just 34px of screen height and is **completely tran
 
 ---
 
+## 🧭 Complete User Guide & Daily Workflow
+
+### 1. Daily Pair-Programming Flow
+1. **Launch:** Start Google Antigravity as usual (from your Desktop shortcut or pinned Start Menu icon). Antigravity Island launches alongside it seamlessly without opening any terminal windows.
+2. **Ambient Sleeping:** The compact pill rests at the top-center of your display (34px height) displaying `Antigravity`. In this state, it consumes **0% CPU** and is completely in **Click-Through Mode**: your cursor clicks right through it to background windows, tabs, or editor menus.
+3. **Working with the Agent:** As soon as you submit a prompt in any Antigravity conversation, the island springs to life:
+   - The Bloub mascot's eyes animate into concentration.
+   - The status updates dynamically (`Thinking...` ➔ `Reading...` ➔ `Writing...` ➔ `Done ✓`).
+4. **Completion:** When your agent finishes its turn, a gentle musical chime plays, and the notch turns green displaying `Done ✓`.
+5. **Dismissal:** Opening and closing the notch (or clicking outside) automatically clears `Done ✓` back to the resting `Antigravity` state.
+6. **Closing:** When you finish your workday and close Google Antigravity, the background watchdog detects that `Antigravity.exe` has exited and shuts down Antigravity Island automatically.
+
+---
+
+### 2. Status Indicators & Color Reference
+
+The compact notch and mascot communicate the agent's exact state using standardized colors and beacon animations:
+
+| Status Text | Dot & Beacon | Mascot Animation | Meaning |
+|---|---|---|---|
+| `Antigravity` | ⚪ Zinc Dot | Relaxed Breathing | **Idle / Sleep:** Waiting for instructions. Zero CPU usage. |
+| `Thinking...` | 🟣 Purple Ping Radar | Orbital rings | **Deliberating:** Model is reasoning, analyzing prompts, or drafting plans. |
+| `Writing...` | 🟢 Cyan Pulse Radar | Alert eyes | **Modifying Code:** Actively editing or creating files in your project. |
+| `Reading...` | 🔵 Blue Pulse Radar | Wide attentive gaze | **Inspecting:** Reading files, workspace directory tree, or logs. |
+| `Executing...` | 🟡 Amber Pulse Radar | Alert eyes | **Terminal Command:** Running a shell command (`bash`, PowerShell, npm, etc.). |
+| `Working...` | 🟢 Cyan Pulse Radar | Concentrated | **Tool Execution:** Processing subagent steps or custom tools. |
+| `Permission Required` | 🟡 Amber Bouncing Beacon | Exclamation point (`!`) | **Approval Blocked:** The model called `ask_question` and requires your decision. |
+| `⚡ N chats active` | 🔵 Sky Blue Pulse | Dynamic multitasking | **Concurrent Activity:** 2 or more chats are currently running in parallel. |
+| `Done ✓` | 🟢 Solid Emerald Dot | Signature Bloub wink (😉) | **Turn Completed:** All actions finished successfully. |
+| `Stopped ⏹` | 🟡 Amber Solid Dot | Wide eyes | **Generation Cancelled:** Turn was halted or edited by the user. |
+| `Error ✕` | 🔴 Rose Red Pulse | Exclamation alert | **Tool Error:** A step or command encountered a failure. |
+
+---
+
+### 3. Interacting with the Expanded Dashboard
+
+Click anywhere on the compact pill to expand into the full **Apple Notch HUD**:
+
+- **Left Column (Mascot & Action Checklist):**
+  - **Bloub Mascot (68px Canvas):** Interactive companion that tracks your cursor across the screen at 60 FPS. *(Tip: Clicking Bloub repeatedly triggers an amusing swirl dizziness easter egg!)*
+  - **Checklist Tracker:** Four step indicators automatically check off as the agent works:
+    - 📖 `Read:` Project context and file reading.
+    - ✏️ `Edit:` Code writing and patch application.
+    - ⚡ `Bash:` Terminal execution and verification.
+    - ✓ `Done:` Solution finalized.
+- **Right Column (Live Code Diff & Interactive Approval):**
+  - **Live Code Previews:** While writing code, displays the active file path, syntax language badge, and real-time syntax-colored diffs (`+` additions, `-` deletions, terminal commands).
+  - **Interactive Approval Card:** When Antigravity asks a question, this panel morphs into an interactive modal showing the question and clickable choice buttons. Clicking any option immediately approves the response and resumes agent execution.
+  - **Response Viewer:** Once complete, displays a clean summary of the agent's response.
+- **Bottom Dock (Sessions & Subagents):**
+  - **Subagent Badges:** Real-time badges for invoked subagents (`Research`, `Code`, `Bash`) with live activity pulses.
+  - **Multi-Session Tabs:** Displays all recent conversations from `~/.gemini/antigravity/brain`.
+  - **Individual Status Dots:** Every session pill has its own radar beacon (purple ping, cyan pulse, amber alert, emerald done).
+  - **Focus Lock (25s):** Clicking any session pill switches the dashboard view to inspect that chat's progress without background streams abruptly stealing focus.
+
+---
+
+### 4. Collapsing & Keyboard Shortcuts
+
+You can collapse the notch at any time through multiple intuitive methods:
+
+- **Keyboard:** Press `Esc` to instantly minimize.
+- **Click Outside:** Click anywhere outside the notch window.
+- **Close Button:** Click the `✕` icon in the top navigation bar.
+- **Mouse Leave:** Move your cursor away; the notch folds back after a 2-second grace timeout.
+- **Manual Quit:** Press `Ctrl + Q` to close the application cleanly.
+
+---
+
+### 5. Sound & Notification Controls
+
+Antigravity Island features procedural audio chimes synthesized in real-time via the Web Audio API (no external sound files required):
+- **Success Chime:** Plays a celebratory ascending major triad when a turn finishes.
+- **Mute / Unmute:** Click the **Settings** tab in the notch header to toggle audio effects on or off.
+
+---
+
+### 6. Seamless "Undo to this Point" Support
+
+If you click the native **"Undo to this point"** button inside Google Antigravity to rewind a conversation:
+- Antigravity Island immediately catches the trajectory shrinkage (`stats.size < lastFileSize`).
+- Any chat messages or code diffs from undone steps are purged instantly from the HUD.
+- The notch indicates `↺ Reverted to earlier point` and cleanly resets back to sleep mode, perfectly in sync with Antigravity.
+
+---
+
 ## 🏛️ Architecture
 
 ```mermaid
@@ -107,11 +193,16 @@ flowchart TD
 
 ### Option 1: Standalone Portable `.exe` (Recommended)
 1. Go to the **[Releases](https://github.com/julzburz/antigravity-island/releases)** page.
-2. Download `Antigravity-Island-Portable.exe`.
+2. Download `Antigravity Island 1.0.0.exe`.
 3. Double-click to run! No Node.js, Python, or installation required.
 
-### Option 2: Setup Installer
-Download `Antigravity-Island-Setup.exe` from Releases if you prefer a standard Windows installer with Start Menu and Desktop shortcuts.
+### Option 2: Symbiotic Auto-Launch with Antigravity
+To make Antigravity Island start automatically whenever you launch Google Antigravity:
+1. Keep `Antigravity Island.exe` in any folder on your machine.
+2. Use the included `launch_antigravity.vbs` script (or point your existing Antigravity shortcut to it).
+3. The script starts both applications simultaneously without opening any black terminal windows.
+4. When you close Antigravity at the end of your session, Antigravity Island detects it and closes itself automatically.
+
 
 ---
 
