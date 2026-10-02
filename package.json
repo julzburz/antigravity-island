@@ -1,0 +1,92 @@
+{
+  "name": "antigravity-island",
+  "version": "1.0.0",
+  "description": "Dynamic Apple Notch Companion for Google Antigravity 2.0",
+  "author": "julzburz",
+  "license": "MIT",
+  "homepage": "https://github.com/julzburz/antigravity-island#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/julzburz/antigravity-island.git"
+  },
+  "keywords": [
+    "antigravity",
+    "google-antigravity",
+    "dynamic-island",
+    "notch",
+    "electron",
+    "react",
+    "bloub",
+    "agentic-ai",
+    "pair-programming",
+    "ai-companion"
+  ],
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev:react": "vite",
+    "build:react": "vite build",
+    "dev": "vite",
+    "start": "electron electron/main.cjs",
+    "build": "vite build",
+    "dist": "vite build && electron-builder",
+    "dist:portable": "vite build && electron-builder --win portable",
+    "dist:dir": "vite build && electron-builder --dir"
+  },
+  "build": {
+    "appId": "com.antigravity.island",
+    "productName": "Antigravity Island",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Antigravity Island"
+    }
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.4.7",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^34.2.0",
+    "electron-builder": "^26.15.3",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
